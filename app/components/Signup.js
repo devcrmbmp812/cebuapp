@@ -18,7 +18,6 @@ import * as Toast from "@remobile/react-native-toast";
 import * as loginActions from "../actions/login-actions";
 import * as rootActions from "../actions/root-actions";
 import backImage from "../images/home.png";
-import logoImage from "../images/logo.png";
 
 export class Signup extends Component {
   password: string;
