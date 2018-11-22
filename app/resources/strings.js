@@ -5,10 +5,12 @@ import LocalizedStrings from "react-localization";
 
 module.exports = new LocalizedStrings({
   en: {
-    github_email: "Github Email",
+    github_email: "Your e-mail",
     password: "Password",
     empty_error: "Cannot be empty",
     sign_in: 'Sign In',
+    sign_up: 'Sign Up',
+    donot_account: "Don't have an account?",
     list_title: 'Repositories',
     details: 'Details',
     tab_1: 'Tab1',

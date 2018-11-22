@@ -17,10 +17,10 @@ import styles from "../resources/styles";
 import * as Toast from "@remobile/react-native-toast";
 import * as loginActions from "../actions/login-actions";
 import * as rootActions from "../actions/root-actions";
-import backImage from "../images/background.png";
+import backImage from "../images/home.png";
 import logoImage from "../images/logo.png";
 
-export class Login extends Component {
+export class Signup extends Component {
   password: string;
   email: string;
   isGoneAlready: boolean;
@@ -82,7 +82,7 @@ export class Login extends Component {
           source={backImage}
         />
         <Content contentContainerStyle={loginStyles.contentStyle}>
-          <Image style={loginStyles.imageStyle} source={logoImage} />
+          <Text style={loginStyles.signupTextStyle}>{strings.sign_up}</Text>
           <ValidationTextInput
             validate={this.validateEmail}
             label={strings.github_email}
@@ -198,4 +198,4 @@ const mapStateToProps = state => ({
   root: state.get("root")
 });
 
-export default connect(mapStateToProps)(Login);
+export default connect(mapStateToProps)(Signup);
