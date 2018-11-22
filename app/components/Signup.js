@@ -85,6 +85,20 @@ export class Signup extends Component {
           <Text style={loginStyles.signupTextStyle}>{strings.sign_up}</Text>
           <ValidationTextInput
             validate={this.validateEmail}
+            label={strings.firstname}
+            onChangeText={text => (this.firstname = text)}
+            style={loginStyles.emailStyle}
+            color={colors.accentColor}
+          />
+          <ValidationTextInput
+            validate={this.validateEmail}
+            label={strings.lastname}
+            onChangeText={text => (this.lastname = text)}
+            style={loginStyles.emailStyle}
+            color={colors.accentColor}
+          />
+          <ValidationTextInput
+            validate={this.validateEmail}
             label={strings.github_email}
             onChangeText={text => (this.email = text)}
             style={loginStyles.emailStyle}
@@ -99,18 +113,18 @@ export class Signup extends Component {
             color={colors.accentColor}
           />
           <Button style={loginStyles.buttonStyle} onPress={this.onLoginPress}>
-            <Text style={loginStyles.buttonTextStyle}>{strings.sign_in}</Text>
+            <Text style={loginStyles.buttonTextStyle}>{strings.sign_up}</Text>
           </Button>
           <View
             style={{
               borderBottomColor: "black",
-              borderBottomWidth: 100
+              borderBottomWidth: 1
             }}
           />
           <Text style={loginStyles.donotaccountTextStyle}>
-            {strings.donot_account}
-            <Text style={loginStyles.signupTextStyle} onPress={this.onSignupPress}>
-              {strings.sign_up}
+            {strings.already_account}
+            <Text style={loginStyles.loginTextStyle} onPress={this.onSigninPress}>
+              {strings.sign_in}
             </Text>
           </Text>
           {this.renderProgress()}
@@ -146,8 +160,8 @@ export class Signup extends Component {
   onLoginPress = () =>
     this.props.dispatch(loginActions.login(this.email, this.password));
 
-  onSignupPress = () =>
-    this.props.navigation.navigate(consts.SIGNUP_SCREEN);
+  onSigninPress = () =>
+    this.props.navigation.navigate(consts.LOGIN_SCREEN);
 }
 
 const loginStyles = {
@@ -161,29 +175,36 @@ const loginStyles = {
     justifyContent: "center",
     alignItems: "center",
     alignSelf: "stretch",
-    marginHorizontal: dimens.margin_large
+    marginHorizontal: dimens.margin_medium
   },
   statusBarStyle: {
     backgroundColor: colors.primaryColor
   },
   emailStyle: {
-    alignSelf: "stretch"
+    alignSelf: "stretch",
+    marginHorizontal: dimens.margin_large,
+    
   },
   buttonStyle: {
-    marginTop: dimens.margin_medium,
+    marginTop: dimens.margin_small,
+    marginHorizontal: dimens.margin_large,
     alignSelf: "stretch",
     justifyContent: "center",
     backgroundColor: colors.accentColor
   },
   buttonTextStyle: {
     color: "white",
-    fontSize: dimens.text_size_button
+    fontSize: dimens.buttontexxt_size
   },
   donotaccountTextStyle: {
     color: "black",
     fontSize: dimens.text_size_label
   },
   signupTextStyle: {
+    color: "black",
+    fontSize: dimens.text_size_Signup,
+  },
+  loginTextStyle: {
     color: "red",
     fontSize: dimens.text_size_label
   },

@@ -167,17 +167,19 @@ const loginStyles = {
     backgroundColor: colors.primaryColor
   },
   emailStyle: {
-    alignSelf: "stretch"
+    alignSelf: "stretch",
+    marginHorizontal: dimens.margin_large,
   },
   buttonStyle: {
     marginTop: dimens.margin_medium,
+    marginHorizontal: dimens.margin_large,
     alignSelf: "stretch",
     justifyContent: "center",
     backgroundColor: colors.accentColor
   },
   buttonTextStyle: {
     color: "white",
-    fontSize: dimens.text_size_button
+    fontSize: dimens.buttontexxt_size
   },
   donotaccountTextStyle: {
     color: "black",

@@ -71,7 +71,7 @@ const validationTextStyles = {
   },
   itemStyle: {
     flex: 0,
-    marginTop: 16
+    marginTop: 8
   },
   inputStyle: {
     color: 'black'
