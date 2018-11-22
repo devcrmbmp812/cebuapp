@@ -17,9 +17,9 @@ import styles from "../resources/styles";
 import * as Toast from "@remobile/react-native-toast";
 import * as loginActions from "../actions/login-actions";
 import * as rootActions from "../actions/root-actions";
-import backImage from '../images/background.png'
+import homeImage from '../images/home.png';
 
-export class Login extends Component {
+export class Home extends Component {
 
   password: string;
   email: string;
@@ -68,7 +68,7 @@ export class Login extends Component {
         {/* <ImageBackground style={{ width: 50, height: 50 }} source={{ uri: 'https://facebook.github.io/react-native/img/opengraph.png' }}> */}
 
           <StatusBar style={loginStyles.statusBarStyle} />
-          <Image style={{width:'100%', height:'100%', position:'absolute', left:0, top:0}} source={backImage} />
+          <Image style={{width:'100%', height:'100%', position:'absolute', left:0, top:0}} source={homeImage} />
 
 
           <Content contentContainerStyle={loginStyles.contentStyle}>
@@ -127,10 +127,7 @@ export class Login extends Component {
 
 
 const loginStyles = {
-  backgroundStyle: {
-    uri: '/images/background.png'
-  },
-  containerStyle: {
+   containerStyle: {
     flexDirection: 'row',
     //backgroundColor: colors.primaryColor,
     alignItems: 'center'
@@ -171,4 +168,4 @@ const mapStateToProps = (state) => ({
   root: state.get('root'),
 });
 
-export default connect(mapStateToProps)(Login)
+export default connect(mapStateToProps)(Home)

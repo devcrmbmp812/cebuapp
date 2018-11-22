@@ -74,7 +74,7 @@ const validationTextStyles = {
     marginTop: 16
   },
   inputStyle: {
-    color: 'white'
+    color: 'black'
   }
 };
 
