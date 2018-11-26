@@ -12,9 +12,11 @@ import {AsyncStorage} from "react-native";
 import loginReducer from "../reducers/loginReducer";
 import rootReducer from "../reducers/rootReducer";
 import listReducer from "../reducers/listReducer";
+import signupReducer from "../reducers/signupReducer";
 import detailsReducer from "../reducers/detailsReducer";
 import createSagaMiddleware from "redux-saga";
 import * as loginSaga from "../saga/login-saga";
+import * as signupSaga from "../saga/signup-saga";
 import * as logoutSaga from "../saga/logout-saga";
 import * as listSaga from "../saga/list-saga";
 import * as detailsSaga from "../saga/details-saga";
@@ -23,6 +25,7 @@ import * as detailsSaga from "../saga/details-saga";
 const combinedReducers = combineReducers({
   root: rootReducer,
   login: loginReducer,
+  signup: signupReducer,
   list: listReducer,
   details: detailsReducer
 });
@@ -30,6 +33,13 @@ const combinedReducers = combineReducers({
 const initialState = new Immutable.Map({
   root: Immutable.Map({
     progress: undefined,
+  }),
+  signup: Immutable.Map({
+    isLoggedIn: false,
+    token: '',
+    signupError: {},
+    username: '',
+    authorizationId: ''
   }),
   login: Immutable.Map({
     isLoggedIn: false,
@@ -63,6 +73,7 @@ export default function configureStore() {
   );
   return {
     ...store, runSaga: [sagaMiddleware.run(loginSaga.loginFlow),
+      sagaMiddleware.run(signupSaga.signupFlow),
       sagaMiddleware.run(listSaga.listFlow),
       sagaMiddleware.run(detailsSaga.detailsFlow),
       sagaMiddleware.run(logoutSaga.logoutFlow)]

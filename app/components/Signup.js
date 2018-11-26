@@ -4,7 +4,7 @@
 
 //@flow
 import React, { Component } from "react";
-import { Image, StatusBar, Text } from "react-native";
+import { Image, StatusBar, Text, Dimensions } from "react-native";
 import { Button, Container, Content, View, Spinner } from "native-base";
 import colors from "../resources/colors";
 import ValidationTextInput from "./ValidationTextInput";
@@ -15,11 +15,14 @@ import strings from "../resources/strings";
 import * as actions from "../actions/action-types";
 import styles from "../resources/styles";
 import * as Toast from "@remobile/react-native-toast";
-import * as loginActions from "../actions/login-actions";
+import * as signupActions from "../actions/signup-actions";
 import * as rootActions from "../actions/root-actions";
 import backImage from "../images/home.png";
 
+//const {width, height} = Dimensions.get('window');
 export class Signup extends Component {
+  firstname: string;
+  lastname: string;
   password: string;
   email: string;
   isGoneAlready: boolean;
@@ -30,6 +33,8 @@ export class Signup extends Component {
 
   constructor() {
     super();
+    this.firstname = "";
+    this.lastname = "";
     this.password = "";
     this.email = "";
     this.isGoneAlready = false;
@@ -44,17 +49,17 @@ export class Signup extends Component {
   }
 
   proceed() {
-    const loginError = this.props.login.get("loginError");
-    const isLoggedIn = this.props.login.get("isLoggedIn");
+    const signupError = this.props.signup.get("signupError");
+    const isLoggedIn = this.props.signup.get("isLoggedIn");
 
     if (
-      this.isObject(loginError) &&
-      loginError &&
-      this.isObject(loginError.message) &&
-      loginError.message
+      this.isObject(signupError) &&
+      signupError &&
+      this.isObject(signupError.message) &&
+      signupError.message
     ) {
-      Toast.showShortBottom(loginError.message);
-      this.props.dispatch(loginActions.setError({}));
+      Toast.showShortBottom(signupError.message);
+      this.props.dispatch(signupActions.setError({}));
     } else if (isLoggedIn && !this.isGoneAlready) {
       this.props.navigation.navigate(consts.REPOSITORY_LIST_SCREEN);
       this.isGoneAlready = true;
@@ -111,7 +116,7 @@ export class Signup extends Component {
             style={loginStyles.emailStyle}
             color={colors.accentColor}
           />
-          <Button style={loginStyles.buttonStyle} onPress={this.onLoginPress}>
+          <Button style={loginStyles.buttonStyle} onPress={this.onSignupPress}>
             <Text style={loginStyles.buttonTextStyle}>{strings.sign_up}</Text>
           </Button>
           <View
@@ -122,7 +127,10 @@ export class Signup extends Component {
           />
           <Text style={loginStyles.donotaccountTextStyle}>
             {strings.already_account}
-            <Text style={loginStyles.loginTextStyle} onPress={this.onSigninPress}>
+            <Text
+              style={loginStyles.loginTextStyle}
+              onPress={this.onSigninPress}
+            >
               {strings.sign_in}
             </Text>
           </Text>
@@ -156,11 +164,13 @@ export class Signup extends Component {
   validatePassword = (text: string): boolean =>
     text.length >= consts.MIN_PASSWORD_LENGTH;
 
-  onLoginPress = () =>
-    this.props.dispatch(loginActions.login(this.email, this.password));
+  onSignupPress = () => {
+    this.props.dispatch(signupActions.signup(this.firstname, this.lastname, this.email, this.password));
+  };
 
-  onSigninPress = () =>
+  onSigninPress = () => {
     this.props.navigation.navigate(consts.LOGIN_SCREEN);
+  };
 }
 
 const loginStyles = {
@@ -181,8 +191,7 @@ const loginStyles = {
   },
   emailStyle: {
     alignSelf: "stretch",
-    marginHorizontal: dimens.margin_large,
-    
+    marginHorizontal: dimens.margin_large
   },
   buttonStyle: {
     marginTop: dimens.margin_small,
@@ -201,7 +210,7 @@ const loginStyles = {
   },
   signupTextStyle: {
     color: "black",
-    fontSize: dimens.text_size_Signup,
+    fontSize: dimens.text_size_Signup
   },
   loginTextStyle: {
     color: "red",
@@ -214,7 +223,7 @@ const loginStyles = {
 };
 
 const mapStateToProps = state => ({
-  login: state.get("login"),
+  signup: state.get("signup"),
   root: state.get("root")
 });
 

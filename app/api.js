@@ -7,6 +7,26 @@ import queryString from "query-string";
 
 // work with api goes here
 
+export function newcreateUser(firstname, lastname, username, password) {
+  console.warn('here')
+  const params = queryString.stringify({
+    firstname: firstname,
+    lastname: lastname,
+    username: username,
+    password: password
+  });
+  return fetch(`http://dev.cebuback.com/api/auth/user?${params}`, {
+    method: 'POST',
+    headers: consts.BASE_HEADER
+  }).then((user) => {
+    console.warn(user);
+    return user.json();
+  }).catch((error) => {
+    console.warn(error);
+  });
+
+}
+
 export function getRepositories(token, page, limit) {
   const params = queryString.stringify({
     access_token: token,

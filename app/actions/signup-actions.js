@@ -3,9 +3,11 @@
  */
 import * as actions from "../actions/action-types";
 
-export function signup() {
+export function signup(firstname, lastname, email, password) {
   return {
-    type: actions.LOGIN_ACTION,
+    type: actions.SIGNUP_ACTION,
+    firstname: firstname,
+    lastname: lastname,
     username: email,
     password: password
   }
@@ -13,14 +15,14 @@ export function signup() {
 
 export function setError(error) {
   return {
-    type: actions.LOGIN_ERROR,
+    type: actions.SIGNUP_ERROR,
     error: error
   }
 }
 
-export function setLoginSuccess(token, username, password) {
+export function setSignupSuccess(token, username, password) {
   return {
-    type: actions.LOGIN_SUCCESS,
+    type: actions.SIGNUP_SUCCESS,
     token,
     username,
     password

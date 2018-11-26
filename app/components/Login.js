@@ -19,7 +19,7 @@ import * as loginActions from "../actions/login-actions";
 import * as rootActions from "../actions/root-actions";
 import backImage from "../images/background.png";
 import logoImage from "../images/logo.png";
-
+//const { width, height } = Dimensions.get("window");
 export class Login extends Component {
   password: string;
   email: string;
@@ -77,7 +77,8 @@ export class Login extends Component {
             height: "100%",
             position: "absolute",
             left: 0,
-            top: 0
+            top: 0, 
+            resizeMode: "cover"
           }}
           source={backImage}
         />
