@@ -14,7 +14,7 @@ import dimens from "../resources/dimens";
 import strings from "../resources/strings";
 import * as actions from "../actions/action-types";
 import styles from "../resources/styles";
-import * as Toast from "@remobile/react-native-toast";
+// import * as Toast from "@remobile/react-native-toast";
 import * as loginActions from "../actions/login-actions";
 import * as rootActions from "../actions/root-actions";
 import backImage from "../images/background.png";
@@ -54,7 +54,7 @@ export class Login extends Component {
       this.isObject(loginError.message) &&
       loginError.message
     ) {
-      Toast.showShortBottom(loginError.message);
+      // Toast.showShortBottom(loginError.message);
       this.props.dispatch(loginActions.setError({}));
     } else if (isLoggedIn && !this.isGoneAlready) {
       this.props.navigation.navigate(consts.REPOSITORY_LIST_SCREEN);

@@ -8,7 +8,6 @@
     "flow": "flow"
   },
   "dependencies": {
-    "@remobile/react-native-toast": "https://github.com/KucherenkoIhor/react-native-toast/tarball/feature/update_build_tools",
     "immutable": "3.8.1",
     "native-base": "2.1.5",
     "prop-types": "=15.5.10",
@@ -17,8 +16,8 @@
     "react-addons-shallow-compare": "15.6.0",
     "react-localization": "0.0.15",
     "react-native": "0.45.1",
-    "react-native-render-html": "2.0.0",
     "react-native-popup-dialog": "0.9.29",
+    "react-native-render-html": "2.0.0",
     "react-navigation": "1.0.0-beta.11",
     "react-redux": "5.0.5",
     "redux": "3.7.0",

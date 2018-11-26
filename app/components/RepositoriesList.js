@@ -15,7 +15,7 @@ import styles from "../resources/styles";
 import consts from "../const";
 import dimens from "../resources/dimens";
 import PopupDialog, {DialogTitle, ScaleAnimation} from "react-native-popup-dialog";
-import * as Toast from "@remobile/react-native-toast/index";
+// import * as Toast from "@remobile/react-native-toast/index";
 import * as listActions from "../actions/list-actions";
 import * as logoutActions from "../actions/logout-actions";
 

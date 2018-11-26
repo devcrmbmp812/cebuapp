@@ -14,7 +14,7 @@ import dimens from "../resources/dimens";
 import strings from "../resources/strings";
 import * as actions from "../actions/action-types";
 import styles from "../resources/styles";
-import * as Toast from "@remobile/react-native-toast";
+// import * as Toast from "@remobile/react-native-toast";
 import * as signupActions from "../actions/signup-actions";
 import * as rootActions from "../actions/root-actions";
 import backImage from "../images/home.png";
@@ -58,7 +58,7 @@ export class Signup extends Component {
       this.isObject(signupError.message) &&
       signupError.message
     ) {
-      Toast.showShortBottom(signupError.message);
+      // Toast.showShortBottom(signupError.message);
       this.props.dispatch(signupActions.setError({}));
     } else if (isLoggedIn && !this.isGoneAlready) {
       this.props.navigation.navigate(consts.REPOSITORY_LIST_SCREEN);

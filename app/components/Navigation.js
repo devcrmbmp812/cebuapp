@@ -34,7 +34,8 @@ export class Navigation extends Component {
 
 function mapStateToProps(state) {
   return {
-    login: state.login
+    login: state.login,
+    signup: state.signup
   }
 }
 export default connect(
