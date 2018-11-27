@@ -15,6 +15,7 @@ export default {
   BASE_PAGE_LIMIT: 10,
   LOGIN_SCREEN: 'Login',
   SIGNUP_SCREEN: 'Signup',
+  DRAWRESULT_SCREEN: 'DrawResult',
   REPOSITORY_LIST_SCREEN: 'RepositoriesList',
   REPOSITORY_DETAILS_SCREEN: 'RepositoryDetails',
   HARDWARE_PRESS_EVENT:'hardwareBackPress',

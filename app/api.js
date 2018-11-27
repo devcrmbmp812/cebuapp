@@ -8,13 +8,13 @@ import FormData from "FormData";
 // work with api goes here
 
 export function newcreateUser(firstname, lastname, username, password) {
-
   var formData = new FormData();
   formData.append("firstname", firstname);
   formData.append("lastname", lastname);
   formData.append("username", username);
   formData.append("password", password);
-  
+  console.warn("formdata", formData);
+
   return fetch(`http://198.18.64.2/api/auth/user/`, {
     method: "POST",
     headers: {
@@ -24,11 +24,10 @@ export function newcreateUser(firstname, lastname, username, password) {
     body: formData
   })
     .then(response => {
-      console.log("test: ", response);
       return response.json();
     })
     .catch(error => {
-      console.log(error);
+      console.warn(error);
     });
 }
 

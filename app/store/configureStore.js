@@ -2,13 +2,13 @@
  * Created by saionara1 on 6/21/17.
  */
 
-import {autoRehydrate, persistStore} from "redux-persist-immutable";
-import {combineReducers} from "redux-immutable";
+import { autoRehydrate, persistStore } from "redux-persist-immutable";
+import { combineReducers } from "redux-immutable";
 import createActionBuffer from "redux-action-buffer";
-import {REHYDRATE} from "redux-persist/constants";
+import { REHYDRATE } from "redux-persist/constants";
 import Immutable from "immutable";
-import {applyMiddleware, compose, createStore} from "redux";
-import {AsyncStorage} from "react-native";
+import { applyMiddleware, compose, createStore } from "redux";
+import { AsyncStorage } from "react-native";
 import loginReducer from "../reducers/loginReducer";
 import rootReducer from "../reducers/rootReducer";
 import listReducer from "../reducers/listReducer";
@@ -21,7 +21,6 @@ import * as logoutSaga from "../saga/logout-saga";
 import * as listSaga from "../saga/list-saga";
 import * as detailsSaga from "../saga/details-saga";
 
-
 const combinedReducers = combineReducers({
   root: rootReducer,
   login: loginReducer,
@@ -33,27 +32,29 @@ const combinedReducers = combineReducers({
 const initialState = new Immutable.Map({
   root: Immutable.Map({
     progress: undefined,
+    token: "",
+    isLoggedIn: false,
   }),
   signup: Immutable.Map({
     isLoggedIn: false,
-    token: '',
+    token: "",
     signupError: {},
-    username: '',
-    authorizationId: ''
+    username: "",
+    authorizationId: ""
   }),
   login: Immutable.Map({
     isLoggedIn: false,
-    token: '',
+    token: "",
     loginError: {},
-    username:'',
-    password:'',
-    authorizationId:''
+    username: "",
+    password: "",
+    authorizationId: ""
   }),
   list: Immutable.Map({
-    data: [],
+    data: []
   }),
   details: Immutable.Map({
-    readMe: ''
+    readMe: ""
   })
 });
 
@@ -62,20 +63,24 @@ export default function configureStore() {
   const store = createStore(
     combinedReducers,
     initialState,
-    compose(applyMiddleware(sagaMiddleware, createActionBuffer(REHYDRATE)), autoRehydrate({log: true})));
-
-  persistStore(
-    store,
-    {
-      storage: AsyncStorage,
-      blacklist: ['root'],
-    }
+    compose(
+      applyMiddleware(sagaMiddleware, createActionBuffer(REHYDRATE)),
+      autoRehydrate({ log: true })
+    )
   );
+
+  persistStore(store, {
+    storage: AsyncStorage,
+    blacklist: ["root"]
+  });
   return {
-    ...store, runSaga: [sagaMiddleware.run(loginSaga.loginFlow),
+    ...store,
+    runSaga: [
+      sagaMiddleware.run(loginSaga.loginFlow),
       sagaMiddleware.run(signupSaga.signupFlow),
       sagaMiddleware.run(listSaga.listFlow),
       sagaMiddleware.run(detailsSaga.detailsFlow),
-      sagaMiddleware.run(logoutSaga.logoutFlow)]
+      sagaMiddleware.run(logoutSaga.logoutFlow)
+    ]
   };
 }

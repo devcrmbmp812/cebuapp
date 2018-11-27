@@ -71,8 +71,8 @@ export class RepositoriesList extends Component {
     const {navigation, login} = this.props;
     const isLoggedIn = login.get('isLoggedIn');
     if (!isLoggedIn && !this.isGoneAlready) {
-      navigation.navigate(consts.LOGIN_SCREEN);
-      this.isGoneAlready = true;
+      // navigation.navigate(consts.LOGIN_SCREEN);
+      // this.isGoneAlready = true;
     }
 
     if (listError && listError.message) {
@@ -88,7 +88,7 @@ export class RepositoriesList extends Component {
     BackHandler.addEventListener(consts.HARDWARE_PRESS_EVENT, () => {
       BackHandler.exitApp();
     });
-    this.props.dispatch(listActions.getList(this.props.login.get('token'), 1, consts.BASE_PAGE_LIMIT));
+    // this.props.dispatch(listActions.getList(this.props.login.get('token'), 1, consts.BASE_PAGE_LIMIT));
   }
 
   render() {

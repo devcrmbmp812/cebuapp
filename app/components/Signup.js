@@ -4,7 +4,7 @@
 
 //@flow
 import React, { Component } from "react";
-import { Image, StatusBar, Text, Dimensions } from "react-native";
+import { Image, StatusBar, Text } from "react-native";
 import { Button, Container, Content, View, Spinner } from "native-base";
 import colors from "../resources/colors";
 import ValidationTextInput from "./ValidationTextInput";
@@ -18,6 +18,7 @@ import styles from "../resources/styles";
 import * as signupActions from "../actions/signup-actions";
 import * as rootActions from "../actions/root-actions";
 import backImage from "../images/home.png";
+import { is } from "immutable";
 
 //const {width, height} = Dimensions.get('window');
 export class Signup extends Component {
@@ -49,20 +50,13 @@ export class Signup extends Component {
   }
 
   proceed() {
-    const signupError = this.props.signup.get("signupError");
-    const isLoggedIn = this.props.signup.get("isLoggedIn");
-
-    if (
-      this.isObject(signupError) &&
-      signupError &&
-      this.isObject(signupError.message) &&
-      signupError.message
-    ) {
-      // Toast.showShortBottom(signupError.message);
-      this.props.dispatch(signupActions.setError({}));
-    } else if (isLoggedIn && !this.isGoneAlready) {
-      this.props.navigation.navigate(consts.REPOSITORY_LIST_SCREEN);
-      this.isGoneAlready = true;
+    let isLoggedIn = this.props.root.get("isLoggedIn");
+    let token = this.props.root.get("token");
+    if (!isLoggedIn && token != "") {
+      this.props.dispatch(rootActions.setLoggedIn(true));
+      this.props.navigation.navigate(consts.DRAWRESULT_SCREEN);
+    } else if (token == "") {
+      this.props.dispatch(rootActions.setLoggedIn(false));
     }
   }
 
@@ -165,7 +159,14 @@ export class Signup extends Component {
     text.length >= consts.MIN_PASSWORD_LENGTH;
 
   onSignupPress = () => {
-    this.props.dispatch(signupActions.signup(this.firstname, this.lastname, this.email, this.password));
+    this.props.dispatch(
+      signupActions.signup(
+        this.firstname,
+        this.lastname,
+        this.email,
+        this.password
+      )
+    );
   };
 
   onSigninPress = () => {

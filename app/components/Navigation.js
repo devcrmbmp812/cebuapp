@@ -7,6 +7,7 @@ import configureStore from "../store/configureStore.js";
 import {StackNavigator} from "react-navigation";
 import Login from "./Login";
 import Signup from "./Signup";
+import DrawResult from "./DrawResult";
 import RepositoriesList from "./RepositoriesList";
 import RepositoryDetails from "./RepositoryDetails";
 
@@ -14,6 +15,7 @@ const store = configureStore();
 const Routes = {
   Login: {screen: Login},
   Signup: {screen: Signup},
+  DrawResult: {screen: DrawResult},
   RepositoriesList: {screen: RepositoriesList},
   RepositoryDetails: {screen: RepositoryDetails}
 };
