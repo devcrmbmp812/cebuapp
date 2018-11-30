@@ -3,7 +3,6 @@
  *
  */
 import { call, put, take } from "redux-saga/effects";
-import { Alert } from "react-native";
 import * as actions from "../actions/action-types";
 import * as Api from "../api";
 import * as signupActions from "../actions/signup-actions";

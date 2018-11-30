@@ -8,20 +8,17 @@ import FormData from "FormData";
 // work with api goes here
 
 export function newcreateUser(firstname, lastname, username, password) {
-  var formData = new FormData();
-  formData.append("firstname", firstname);
-  formData.append("lastname", lastname);
-  formData.append("username", username);
-  formData.append("password", password);
-  console.warn("formdata", formData);
+  let signupData = new FormData();
+  signupData.append("firstname", firstname);
+  signupData.append("lastname", lastname);
+  signupData.append("username", username);
+  signupData.append("password", password);
+  
 
-  return fetch(`http://198.18.64.2/api/auth/user/`, {
+  return fetch(consts.API_ENDPOINT + `auth/userRegister/`, {
     method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "multipart/form-data"
-    },
-    body: formData
+    headers: consts.BASE_HEADER,
+    body: signupData
   })
     .then(response => {
       return response.json();
@@ -29,6 +26,25 @@ export function newcreateUser(firstname, lastname, username, password) {
     .catch(error => {
       console.warn(error);
     });
+}
+
+export function loginUser(username, password) {
+  let loginData = new FormData();
+  loginData.append("username", username);
+  loginData.append("password", password);
+
+  return fetch(consts.API_ENDPOINT + `auth/userLogin/`, {
+    method: "POST",
+    headers: consts.BASE_HEADER,
+    body: loginData
+  })
+    .then(response => {
+      return response.json();
+    })
+    .catch(error => {
+      console.warn(error);
+    });
+
 }
 
 export function getRepositories(token, page, limit) {

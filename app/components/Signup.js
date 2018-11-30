@@ -218,8 +218,8 @@ const loginStyles = {
     fontSize: dimens.text_size_label
   },
   imageStyle: {
-    width: 120,
-    height: 120
+    width: 140,
+    height: 150
   }
 };
 

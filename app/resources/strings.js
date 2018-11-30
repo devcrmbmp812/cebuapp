@@ -14,14 +14,19 @@ module.exports = new LocalizedStrings({
     sign_up: 'Sign Up',
     donot_account: "Don't have an account?",
     already_account: "Already have an account?",
-    list_title: 'Repositories',
+    drawresult: 'Draw Result',
     details: 'Details',
-    tab_1: 'Tab1',
-    tab_2: 'Tab2',
-    tab_3: 'Tab3',
+    betresult: 'Bet Result',
+    quickpick: 'Quick Pick',
+    credits: 'Credits',
+    tab_4: 'Profile',
     logout: 'LogOut',
     logout_message: 'Are you sure you want to logout?',
     ok: 'Ok',
-    cancel:'Cancel'
+    cancel:'Cancel',
+    start: 'Start',
+    stop: 'Stop',
+    submit: 'Submit',
+    clearall: 'Clear All'
   }
 });

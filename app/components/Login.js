@@ -45,20 +45,28 @@ export class Login extends Component {
   }
 
   proceed() {
-    const loginError = this.props.login.get("loginError");
-    const isLoggedIn = this.props.login.get("isLoggedIn");
+    // const loginError = this.props.login.get("loginError");
+    // const isLoggedIn = this.props.login.get("isLoggedIn");
 
-    if (
-      this.isObject(loginError) &&
-      loginError &&
-      this.isObject(loginError.message) &&
-      loginError.message
-    ) {
-      // Toast.showShortBottom(loginError.message);
-      this.props.dispatch(loginActions.setError({}));
-    } else if (isLoggedIn && !this.isGoneAlready) {
-      this.props.navigation.navigate(consts.REPOSITORY_LIST_SCREEN);
-      this.isGoneAlready = true;
+    // if (
+    //   this.isObject(loginError) &&
+    //   loginError &&
+    //   this.isObject(loginError.message) &&
+    //   loginError.message
+    // ) {
+    //   // Toast.showShortBottom(loginError.message);
+    //   this.props.dispatch(loginActions.setError({}));
+    // } else if (isLoggedIn && !this.isGoneAlready) {
+    //   this.props.navigation.navigate(consts.REPOSITORY_LIST_SCREEN);
+    //   this.isGoneAlready = true;
+    // }
+    let isLoggedIn = this.props.root.get("isLoggedIn");
+    let token = this.props.root.get("token");
+    if (!isLoggedIn && token != "") {
+      this.props.dispatch(rootActions.setLoggedIn(true));
+      this.props.navigation.navigate(consts.DRAWRESULT_SCREEN);
+    } else if (token == "") {
+      this.props.dispatch(rootActions.setLoggedIn(false));
     }
   }
 
@@ -191,8 +199,8 @@ const loginStyles = {
     fontSize: dimens.text_size_label
   },
   imageStyle: {
-    width: 120,
-    height: 120
+    width: 140,
+    height: 150
   }
 };
 

@@ -9,10 +9,11 @@ export default {
   CLIENT_ID: 'ffb12e79140e7b6597ba',
   CLIENT_SECRET: 'd07dadbce095325cebfc40a46eb467e906063927',
   BASE_HEADER: {
-    'Accept': 'application/vnd.github.v3.full+json',
-    'Content-Type': 'application/json',
+    Accept: "application/json",
+    "Content-Type": "multipart/form-data"
   },
   BASE_PAGE_LIMIT: 10,
+  API_ENDPOINT: 'http://198.18.96.3/api/',
   LOGIN_SCREEN: 'Login',
   SIGNUP_SCREEN: 'Signup',
   DRAWRESULT_SCREEN: 'DrawResult',

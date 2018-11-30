@@ -15,7 +15,7 @@ import consts from "../const";
 //import circleImage from "../images/circle.png";
 import logoImage from "../images/logo.png";
 const { height, width } = Dimensions.get("window");
-export default class RepositoryListItem extends React.PureComponent {
+export default class DrawResultListItem extends React.PureComponent {
   _onPress = () => {
     const { navigate } = this.props.navigation;
     navigate(consts.REPOSITORY_DETAILS_SCREEN, {

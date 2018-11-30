@@ -9,9 +9,10 @@ import * as rootActions from "../actions/root-actions";
 
 function* authorize(username, password) {
   try {
-    const token = yield call(Api.getAccessToken, username, password);
+    const token = yield call(Api.loginUser, username, password);
     if (!token.message) {
       yield put(loginActions.setLoginSuccess(token, username, password));
+      yield put(rootActions.setToken(token));
       return token;
     } else {
       yield put(loginActions.setError(token));
