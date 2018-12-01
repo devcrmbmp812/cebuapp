@@ -13,7 +13,7 @@ export default {
     "Content-Type": "multipart/form-data"
   },
   BASE_PAGE_LIMIT: 10,
-  API_ENDPOINT: 'http://198.18.96.3/api/',
+  API_ENDPOINT: 'http://198.18.96.10/api/',
   LOGIN_SCREEN: 'Login',
   SIGNUP_SCREEN: 'Signup',
   DRAWRESULT_SCREEN: 'DrawResult',

@@ -1,4 +1,4 @@
-package com.reacttemplate;
+package com.cebuboss;
 
 import android.app.Application;
 
