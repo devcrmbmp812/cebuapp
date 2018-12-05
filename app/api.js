@@ -47,6 +47,27 @@ export function loginUser(username, password) {
 
 }
 
+export function getDrawresults(token, page, limit) {
+  const params = queryString.stringify({
+    page: page,
+    per_page: limit
+  });
+  //console.warn('params', params);
+  //console.warn('path', `drawresult/drawresultlist?${params}`);
+  //console.warn('path',)
+  return fetch(consts.API_ENDPOINT + `drawresult/drawresultlist?${params}`, {
+    method: "GET",
+    headers: {'Authorization': token}
+  })
+    .then(list => {
+    //  console.warn('list',list);
+      return list.json();
+    })
+    .catch(error => {
+      console.log(error);
+    });
+}
+
 export function getRepositories(token, page, limit) {
   const params = queryString.stringify({
     access_token: token,

@@ -9,8 +9,9 @@ import * as listActions from "../actions/list-actions";
 
 function* getList(token, page, limit) {
   try {
-    const list = yield call(Api.getRepositories, token, page, limit);
-    if (!list.message) {
+    const list = yield call(Api.getDrawresults, token, page, limit);
+    //console.warn("list", list);
+    if (list) {
       yield put(listActions.setListSuccess(list, page));
       return list;
     } else {

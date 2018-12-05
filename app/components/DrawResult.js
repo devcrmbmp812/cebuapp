@@ -72,9 +72,9 @@ export class DrawResult extends Component {
   _renderItem = ({ item }) => (
     <DrawResultListItem
       id={item.id}
-      repository={item}
-      title={item.full_name}
-      description={item.description}
+      drawdate={item.drawdate}
+      drawtime={item.drawtime}
+      winners={item.result}
       navigation={this.props.navigation}
     />
   );
@@ -89,6 +89,23 @@ export class DrawResult extends Component {
     />
   );
 
+  componentDidUpdate() {
+    const {list} = this.props;
+    const {listError} = list;
+
+    const {navigation, login} = this.props;
+    const isLoggedIn = login.get('isLoggedIn');
+    if (!isLoggedIn && !this.isGoneAlready) {
+      navigation.navigate(consts.LOGIN_SCREEN);
+      // this.isGoneAlready = true;
+    }
+
+    if (listError && listError.message) {
+      //Toast.showShortBottom(this.props.login.get('loginError').message);
+      this.props.dispatch(listActions.setError({}))
+    }
+  }
+
   componentDidMount() {
     this.props.navigation.setParams({
       showDialog: this.showDialog.bind(this)
@@ -96,6 +113,9 @@ export class DrawResult extends Component {
     BackHandler.addEventListener(consts.HARDWARE_PRESS_EVENT, () => {
       BackHandler.exitApp();
     });
+    let token = this.props.root.get('token').token.token;
+    //console.warn('token', token);
+    this.props.dispatch(listActions.getList(token, 1, consts.BASE_PAGE_LIMIT));
   }
 
   renderLogOutDialog() {
@@ -239,11 +259,15 @@ export class DrawResult extends Component {
   dispatchGetRepos() {
     this.props.dispatch(
       listActions.getList(
-        this.props.login.get("token"),
+        this.props.root.get('token').token.token,
         this.getNextPage(),
         consts.BASE_PAGE_LIMIT
       )
     );
+  }
+
+  getNextPage() {
+    return Math.ceil(this.props.list.get('data').length / consts.BASE_PAGE_LIMIT) + 1
   }
 
   showDialog() {

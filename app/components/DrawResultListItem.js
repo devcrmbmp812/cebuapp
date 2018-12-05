@@ -17,10 +17,10 @@ import logoImage from "../images/logo.png";
 const { height, width } = Dimensions.get("window");
 export default class DrawResultListItem extends React.PureComponent {
   _onPress = () => {
-    const { navigate } = this.props.navigation;
-    navigate(consts.REPOSITORY_DETAILS_SCREEN, {
-      repository: this.props.repository
-    });
+    // const { navigate } = this.props.navigation;
+    // navigate(consts.REPOSITORY_DETAILS_SCREEN, {
+    //   repository: this.props.repository
+    // });
   };
 
   render() {
@@ -35,7 +35,7 @@ export default class DrawResultListItem extends React.PureComponent {
             />
           </View>
           <View style={itemStyles.leftpanel}>
-            <Text style={itemStyles.itemTitleStyle}>{this.props.title}</Text>
+            <Text style={itemStyles.itemTitleStyle}>{this.props.drawtime}  {this.props.drawdate}</Text>
             <View style={itemStyles.container}>
               <View style={itemStyles.circleimage}>
                 <Text style={{color:'white'}}>5</Text>
@@ -48,7 +48,7 @@ export default class DrawResultListItem extends React.PureComponent {
               </View>
             </View>
             <Text style={itemStyles.itemDescriptionStyle}>
-              {this.props.title}
+              {this.props.winners} Winners
             </Text>
           </View>
         </View>
@@ -59,20 +59,27 @@ export default class DrawResultListItem extends React.PureComponent {
 
 const itemStyles = {
   container: {
-    flex: 1,
+    flex: 2,
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-between",
-    paddingLeft: width / 40,
-    paddingRight: width / 40,
-    paddingTop: width / 40,
+    justifyContent: "center",
+    // paddingLeft: width / 40,
+    // paddingRight: width / 40,
+    // paddingTop: width / 40,
     backgroundColor: "#ecf0f1"
   },
   rightpanel: {
     paddingLeft: width/40,
   },
   leftpanel: {
-    paddingLeft: width/30,
+     //flex: 1,
+     //flexDirection: 'row',
+    alignItems: "center",
+    justifyContent: "center",
+    padding: width/40,
+    //justifyContent: "space-between",
+    //paddingLeft: width/30,
+    //width: width/2
   },
   logoimage: {
     height: 70,
@@ -85,11 +92,13 @@ const itemStyles = {
     borderRadius: 40,
     backgroundColor:'#ff00ff',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    margin:width/30,
+    padding:width/30
 
   },
   itemStyle: {
-    marginHorizontal: 4,
+    //marginHorizontal: 4,
     borderColor: "lightgrey",
     elevation: 4,
     borderRadius: 4,
@@ -104,7 +113,7 @@ const itemStyles = {
     padding: 10
   },
   itemDescriptionStyle: {
-    color: "darkgrey",
+    color: "black",
     fontSize: 17,
     paddingLeft: 10
   }
