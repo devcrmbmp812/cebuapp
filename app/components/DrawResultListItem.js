@@ -23,6 +23,10 @@ export default class DrawResultListItem extends React.PureComponent {
     // });
   };
 
+  _getChar = (string,index) => {
+    return string.split('')[index];
+  };
+
   render() {
     return (
       <TouchableHighlight onPress={this._onPress}>
@@ -38,13 +42,13 @@ export default class DrawResultListItem extends React.PureComponent {
             <Text style={itemStyles.itemTitleStyle}>{this.props.drawtime}  {this.props.drawdate}</Text>
             <View style={itemStyles.container}>
               <View style={itemStyles.circleimage}>
-                <Text style={{color:'white'}}>5</Text>
+                <Text style={{color:'white'}}>{this._getChar(this.props.winners,0)}</Text>
               </View>
               <View style={itemStyles.circleimage}>
-                <Text style={{color:'white'}}>5</Text>
+                <Text style={{color:'white'}}>{this._getChar(this.props.winners,1)}</Text>
               </View>
               <View style={itemStyles.circleimage}>
-                <Text style={{color:'white'}}>5</Text>
+                <Text style={{color:'white'}}>{this._getChar(this.props.winners,2)}</Text>
               </View>
             </View>
             <Text style={itemStyles.itemDescriptionStyle}>
