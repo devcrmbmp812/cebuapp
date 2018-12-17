@@ -14,7 +14,7 @@ export default {
   },
   BASE_PAGE_LIMIT: 10,
   API_ENDPOINT: 'http://198.18.104.167/api/',
-  LOGIN_SCREEN: 'Login',
+  LOGIN_SCREEN: 'Login',  
   SIGNUP_SCREEN: 'Signup',
   DRAWRESULT_SCREEN: 'DrawResult',
   REPOSITORY_LIST_SCREEN: 'RepositoriesList',
