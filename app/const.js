@@ -18,6 +18,6 @@ export default {
   SIGNUP_SCREEN: 'Signup',
   DRAWRESULT_SCREEN: 'DrawResult',
   REPOSITORY_LIST_SCREEN: 'RepositoriesList',
-  REPOSITORY_DETAILS_SCREEN: 'RepositoryDetails',
+  REPOSITORY_DETAILS_SCREEN: 'RepositoryDetails',   
   HARDWARE_PRESS_EVENT:'hardwareBackPress',
 }
