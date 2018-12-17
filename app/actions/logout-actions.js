@@ -3,12 +3,10 @@
  */
 import * as actions from "../actions/action-types";
 
-export function logout(authId, username, password) {
+export function logout(token) {
   return {
     type: actions.LOGOUT_ACTION,
-    authId: authId,
-    username: username,
-    password: password
+    token: token
   }
 }
 

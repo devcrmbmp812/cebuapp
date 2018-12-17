@@ -24,7 +24,10 @@ export default class QuickPickComponent extends React.PureComponent {
     super(props);
     this.state = {
       page: 1,
-      selected: 0
+      selected: 0,
+      firstValue:0,
+      secondValue:0,
+      thirdValue:0
     };
   }
   _onPress = () => {
@@ -94,13 +97,13 @@ export default class QuickPickComponent extends React.PureComponent {
         </View>
         <View style={itemStyles.container}>
           <View style={itemStyles.circleimage}>
-            <TextInput style={itemStyles.numberText} value={"5"} />
+            <TextInput style={itemStyles.numberText} value={this.state.firstValue} onChangeText={(text)=>{this.setState({firstValue:text})}}/>
           </View>
           <View style={itemStyles.circleimage}>
-            <Text style={itemStyles.numberText}>5</Text>
+          <TextInput style={itemStyles.numberText} value={this.state.secondValue} onChangeText={(text)=>{this.setState({secondValue:text})}}/>
           </View>
           <View style={itemStyles.circleimage}>
-            <Text style={itemStyles.numberText}>5</Text>
+          <TextInput style={itemStyles.numberText} value={this.state.thirdValue} onChangeText={(text)=>{this.setState({thirdValue:text})}}/>
           </View>
         </View>
         <Button style={itemStyles.buttonSubmitStyle}>

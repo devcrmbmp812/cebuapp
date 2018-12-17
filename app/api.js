@@ -124,10 +124,23 @@ export function getAccessToken(username, password) {
     });
 }
 
-export function logOut(authId, username, password) {
+export function logOut(token) {
+
+  return fetch(consts.API_ENDPOINT + `auth/logout`, {
+    method: "DELETE",
+    headers: {'Authorization': token}
+  })
+    .then(list => {
+    //  console.warn('list',list);
+      return list.json();
+    })
+    .catch(error => {
+      console.log(error);
+    });
+
   return fetch(`https://api.github.com/authorizations/${authId}`, {
     method: "DELETE",
-    headers: getAuthHeader(username, password)
+    headers: {'Authorization': token}
   })
     .then(user => {
       return user.json();

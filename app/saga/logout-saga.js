@@ -8,9 +8,9 @@ import * as logoutActions from "../actions/logout-actions";
 import * as rootActions from "../actions/root-actions";
 
 
-function* logOut(authId, username, password) {
+function* logOut(token) {
   try {
-    const result = yield call(Api.logOut, authId, username, password);
+    const result = yield call(Api.logOut, token);
     if (!result) {
       yield put(logoutActions.setLogoutSuccess());
     } else {
@@ -23,9 +23,9 @@ function* logOut(authId, username, password) {
 
 export function* logoutFlow() {
   while (true) {
-    const {username, password, authId} = yield take(actions.LOGOUT_ACTION);
+    const {token} = yield take(actions.LOGOUT_ACTION);
     yield put(rootActions.controlProgress(true));
-    yield call(logOut, authId, username, password);
+    yield call(logOut, token);
     yield put(rootActions.controlProgress(false));
   }
 }

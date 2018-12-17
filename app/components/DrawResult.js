@@ -169,9 +169,7 @@ export class DrawResult extends Component {
   dispatchLogOut() {
     this.props.dispatch(
       logoutActions.logout(
-        this.props.login.get("authorizationId"),
-        this.props.login.get("username"),
-        this.props.login.get("password")
+        this.props.root.get('token').token.token
       )
     );
   }
