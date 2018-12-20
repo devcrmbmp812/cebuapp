@@ -137,17 +137,6 @@ export function logOut(token) {
     .catch(error => {
       console.log(error);
     });
-
-  return fetch(`https://api.github.com/authorizations/${authId}`, {
-    method: "DELETE",
-    headers: {'Authorization': token}
-  })
-    .then(user => {
-      return user.json();
-    })
-    .catch(error => {
-      console.log(error);
-    });
 }
 function getAuthHeader(username, password) {
   const baseString = Base64.btoa(`${username}:${password}`).replace(

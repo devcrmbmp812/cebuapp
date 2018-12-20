@@ -9,14 +9,13 @@ import { REHYDRATE } from "redux-persist/constants";
 import Immutable from "immutable";
 import { applyMiddleware, compose, createStore } from "redux";
 import { AsyncStorage } from "react-native";
+import createSagaMiddleware from "redux-saga";
 
 import loginReducer from "../reducers/loginReducer";
 import rootReducer from "../reducers/rootReducer";
 import listReducer from "../reducers/listReducer";
 import signupReducer from "../reducers/signupReducer";
 import detailsReducer from "../reducers/detailsReducer";
-
-import createSagaMiddleware from "redux-saga";
 
 import * as loginSaga from "../saga/login-saga";
 import * as signupSaga from "../saga/signup-saga";
@@ -34,9 +33,13 @@ const combinedReducers = combineReducers({
 
 const initialState = new Immutable.Map({
   root: Immutable.Map({
+    loginError: {},
+    username: "",
+    password: "",
     progress: undefined,
     token: "",
     isLoggedIn: false,
+    authorizationId: ""
   }),
   signup: Immutable.Map({
     isLoggedIn: false,
@@ -71,7 +74,7 @@ export default function configureStore() {
       autoRehydrate({ log: true })
     )
   );
-
+  
   persistStore(store, {
     storage: AsyncStorage,
     blacklist: ["root"]

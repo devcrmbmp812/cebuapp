@@ -1,5 +1,5 @@
 /**
- * Created by Travis on 10/20/18.
+ * Created by kash.C on 10/20/18.
  */
 import React, {Component} from "react";
 import {connect, Provider} from "react-redux";

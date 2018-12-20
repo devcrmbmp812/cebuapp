@@ -9,13 +9,14 @@ import { Button, Container, Content, View, Spinner } from "native-base";
 import { connect } from "react-redux";
 // import * as Toast from "@remobile/react-native-toast";
 
-import colors from "../resources/colors";
+
 import ValidationTextInput from "./ValidationTextInput";
 import consts from "../const";
+import colors from "../resources/colors";
 import dimens from "../resources/dimens";
 import strings from "../resources/strings";
-import * as actions from "../actions/action-types";
 import styles from "../resources/styles";
+import * as actions from "../actions/action-types";
 
 import * as loginActions from "../actions/login-actions";
 import * as rootActions from "../actions/root-actions";
@@ -25,6 +26,7 @@ import logoImage from "../images/logo.png";
 //const { width, height } = Dimensions.get("window");
 
 export class Login extends Component {
+  
   password: string;
   email: string;
   isGoneAlready: boolean;

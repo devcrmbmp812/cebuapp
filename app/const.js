@@ -1,5 +1,5 @@
 /**
- * Created by Kash.C on 11/2/18.
+ * Created by Kash.C on 10/19/18.
  */
 
 // @flow
@@ -13,7 +13,7 @@ export default {
     "Content-Type": "multipart/form-data"
   },
   BASE_PAGE_LIMIT: 10,
-  API_ENDPOINT: 'http://198.18.64.193/api/',
+  API_ENDPOINT: 'http://198.18.80.218/api/',
   LOGIN_SCREEN: 'Login',  
   SIGNUP_SCREEN: 'Signup',
   DRAWRESULT_SCREEN: 'DrawResult',
