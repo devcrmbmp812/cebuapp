@@ -1,25 +1,29 @@
 /**
- * Created by saionara1 on 6/21/17.
+ * Created by Kash.C on 10/29/18.
  */
 
 //@flow
 import React, { Component } from "react";
 import { Image, StatusBar, Text } from "react-native";
 import { Button, Container, Content, View, Spinner } from "native-base";
+import { connect } from "react-redux";
+// import * as Toast from "@remobile/react-native-toast";
+
 import colors from "../resources/colors";
 import ValidationTextInput from "./ValidationTextInput";
-import { connect } from "react-redux";
 import consts from "../const";
 import dimens from "../resources/dimens";
 import strings from "../resources/strings";
 import * as actions from "../actions/action-types";
 import styles from "../resources/styles";
-// import * as Toast from "@remobile/react-native-toast";
+
 import * as loginActions from "../actions/login-actions";
 import * as rootActions from "../actions/root-actions";
+
 import backImage from "../images/background.png";
 import logoImage from "../images/logo.png";
 //const { width, height } = Dimensions.get("window");
+
 export class Login extends Component {
   password: string;
   email: string;

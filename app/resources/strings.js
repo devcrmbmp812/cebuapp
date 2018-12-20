@@ -1,5 +1,5 @@
 /**
- * Created by saionara1 on 6/21/17.
+ * Created by Kash.C on 11/21/18.
  */
 import LocalizedStrings from "react-localization";
 

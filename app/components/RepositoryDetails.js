@@ -1,5 +1,5 @@
 /**
- * Created by saionara1 on 7/5/17.
+ * Created by Kash.C on 10/29/18.
  */
 import React, {Component} from "react";
 import {Image, Text, View} from "react-native";

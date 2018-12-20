@@ -44,6 +44,9 @@ export default class QuickPickComponent extends React.PureComponent {
   };
   onStartPress() {}
   onStopPress() {}
+  onSubmitPress = () => {
+    alert(this.state.firstValue);
+  }
   render() {
     return (
       <View style={itemStyles.itemStyle}>
@@ -97,16 +100,16 @@ export default class QuickPickComponent extends React.PureComponent {
         </View>
         <View style={itemStyles.container}>
           <View style={itemStyles.circleimage}>
-            <TextInput style={itemStyles.numberText} value={this.state.firstValue} onChangeText={(text)=>{this.setState({firstValue:text})}}/>
+            <TextInput style={itemStyles.numberText} keyboardType="numeric" value={`${this.state.firstValue}`} maxLength={1} onChangeText={(text)=>{this.setState({firstValue:text})}}/>
           </View>
           <View style={itemStyles.circleimage}>
-          <TextInput style={itemStyles.numberText} value={this.state.secondValue} onChangeText={(text)=>{this.setState({secondValue:text})}}/>
+          <TextInput style={itemStyles.numberText} keyboardType="numeric" value={`${this.state.secondValue}`} maxLength={1} onChangeText={(text)=>{this.setState({secondValue:text})}}/>
           </View>
           <View style={itemStyles.circleimage}>
-          <TextInput style={itemStyles.numberText} value={this.state.thirdValue} onChangeText={(text)=>{this.setState({thirdValue:text})}}/>
+          <TextInput style={itemStyles.numberText} keyboardType="numeric" value={`${this.state.thirdValue}`} maxLength={1} onChangeText={(text)=>{this.setState({thirdValue:text})}}/>
           </View>
         </View>
-        <Button style={itemStyles.buttonSubmitStyle}>
+        <Button style={itemStyles.buttonSubmitStyle} onPress={this.onSubmitPress}>
           <Text style={itemStyles.buttonBoldStyle}>{strings.submit}</Text>
         </Button>
         <Button style={itemStyles.buttonSubmitStyle}>

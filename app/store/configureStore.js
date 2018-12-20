@@ -1,5 +1,5 @@
 /**
- * Created by saionara1 on 6/21/17.
+ * Created by Travis on 10/28/18.
  */
 
 import { autoRehydrate, persistStore } from "redux-persist-immutable";
@@ -9,12 +9,15 @@ import { REHYDRATE } from "redux-persist/constants";
 import Immutable from "immutable";
 import { applyMiddleware, compose, createStore } from "redux";
 import { AsyncStorage } from "react-native";
+
 import loginReducer from "../reducers/loginReducer";
 import rootReducer from "../reducers/rootReducer";
 import listReducer from "../reducers/listReducer";
 import signupReducer from "../reducers/signupReducer";
 import detailsReducer from "../reducers/detailsReducer";
+
 import createSagaMiddleware from "redux-saga";
+
 import * as loginSaga from "../saga/login-saga";
 import * as signupSaga from "../saga/signup-saga";
 import * as logoutSaga from "../saga/logout-saga";

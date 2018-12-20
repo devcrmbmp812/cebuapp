@@ -1,10 +1,11 @@
 /**
- * Created by saionara1 on 6/21/17.
+ * Created by Travis on 10/20/18.
  */
 import React, {Component} from "react";
 import {connect, Provider} from "react-redux";
 import configureStore from "../store/configureStore.js";
 import {StackNavigator} from "react-navigation";
+
 import Login from "./Login";
 import Signup from "./Signup";
 import DrawResult from "./DrawResult";
@@ -12,6 +13,7 @@ import RepositoriesList from "./RepositoriesList";
 import RepositoryDetails from "./RepositoryDetails";
 
 const store = configureStore();
+
 const Routes = {
   Login: {screen: Login},
   Signup: {screen: Signup},
@@ -19,6 +21,7 @@ const Routes = {
   RepositoriesList: {screen: RepositoriesList},
   RepositoryDetails: {screen: RepositoryDetails}
 };
+
 const Navigator = StackNavigator(Routes, {
   headerMode: 'screen'
 });

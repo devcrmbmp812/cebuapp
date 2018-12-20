@@ -1,5 +1,5 @@
 /**
- * Created by saionara1 on 6/23/17.
+ * Created by Kash.C on 11/23/18.
  */
 export default {
   primaryColor: 'black',
